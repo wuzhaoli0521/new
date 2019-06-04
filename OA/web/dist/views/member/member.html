@@ -1,0 +1,233 @@
+<title>成员管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <P>
+        <H2><i class="layui-icon">&#xe770;</i> 成员管理</H2></P>
+    </div>
+</div>
+
+<div class="layui-tab layui-tab-brief">
+    <ul class="layui-tab-title">
+        <li class="layui-this">企业成员</li>
+        <li>职位</li>
+        <li>机器人</li>
+        <li>实习名单</li>
+        <li>已禁用账号</li>
+    </ul>
+    <div class="layui-tab-content" style="padding: 0">
+        <div class="layui-tab-item layui-show">
+            <div class="layui-fluid" style="padding: 0">
+                <div class="layui-row layui-col-space15" style="background-color: #ffffff">
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                        <div class="layui-card" style="border-right: 1px solid rgba(111,128,146,0.39);box-shadow:none">
+                            <br>
+                            <div class="layui-input-block" style="width: 90%;margin-left: 5%">
+                                <i class="layui-icon" style="position: absolute;margin-left:-97%;margin-top: 12px">&#xe615;</i>
+                                <input type="text" name="title" required lay-verify="required" placeholder="搜索姓名，工号，用户名"
+                                       autocomplete="off" class="layui-input"
+                                       style="padding-left:30px">
+                            </div>
+                            <br>
+                            <div class="layui-collapse" style="width: 88%;margin-left: 6%;text-align: left">
+                                <div class="layui-colla-item">
+                                    <h2 class="layui-colla-title">北京曲美装饰有限公司
+                                        <a href="javascript:;" layadmin-event="flexible">
+                                            <i class="layui-icon layui-icon-add-circle" id="LAY_app_addsuff"
+                                               style="color: #0C0C0C;margin-left: 7px">
+                                            </i>
+                                        </a>
+                                    </h2>
+                                    <div class="layui-colla-content layui-show">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">未分配部门</h2>
+                                            <div class="layui-colla-content layui-show">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="text-align: center;margin-top: 110%">
+                                <button class="layui-btn layui-btn-radius layui-btn-fluid"
+                                        style="width: 90%;background-color: #22d7bb">管理部门
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="layui-col-xs9 layui-col-sm9 layui-col-md9">
+                        <div class="layui-card" style="box-shadow:none">
+
+                            <div style="width:98%;margin-top: 15px;background-color:#ffffff">
+                                <button class="layui-btn layui-btn-hid layui-btn-sm ">
+                                    <h3>调整部门</h3>
+                                </button>
+                                <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-normal"
+                                        style="background-color: #22d7bb">
+                                    <i class="layui-icon layui-icon-add-1"> <span>添加成员</span>
+                                    </i>
+                                </button>
+                                <button class="layui-btn layui-btn-xs layui-btn-radius layui-btn-normal"
+                                        style="background-color: #22d7bb">
+                                    <i class="layui-icon layui-icon-more"> <span>更多</span>
+                                    </i>
+                                </button>
+                            </div>
+                            <div style="text-align: left;margin-top: -25px">
+                                <h2>北京曲美装饰有限公司 <i class="layui-icon layui-icon-down">
+                                </i></h2>
+                                <br>
+                                <table class="layui-hide" id="test-table-toolbar"
+                                       lay-filter="test-table-toolbar" style="border:none"></table>
+
+                                <script type="text/html" id="test-table-toolbar-toolbarDemo">
+                                    <div class="layui-btn-container">
+                                        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+                                        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目
+                                        </button>
+                                        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+                                    </div>
+                                </script>
+
+                                <script type="text/html" id="test-table-toolbar-barDemo">
+                                    <a style="color: rgba(0,219,197,0.99);cursor:pointer ">设置</a>
+                                </script>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-tab-item">
+            <div style="width:98%;margin-top: 15px">
+                <button class="layui-btn  layui-btn-radius layui-btn-normal"
+                        style="background-color: #22d7bb">
+                    <h3>添加职位</h3>
+
+                </button>
+
+            </div>
+        </div>
+        <div class="layui-tab-item">3</div>
+        <div class="layui-tab-item">4</div>
+        <div class="layui-tab-item">5</div>
+        <div class="layui-tab-item">6</div>
+    </div>
+</div>
+
+
+<script>
+    layui.use(['admin'], function () {
+        var $ = layui.$
+            , element = layui.element
+            , table = layui.table;
+
+        table.render({
+            elem: '#test-table-toolbar'
+            , url: '/User/findall'
+            , method: 'GET'
+            ,toolbar: false
+            , title: '用户数据表'
+            , skin: 'line' //行边框风格
+            , even: false //开启隔行背景
+            , size: 'lg' //小尺寸的表格
+            , backgroundColor: '#ffffff'
+            , cols: [[
+                {type: 'checkbox'}
+                , {field: 'name', title: '姓名', unresize: true, sort: true, width: 80, align: 'center'}
+                , {field: 'workid', title: '工号', width: 80, align: 'center'}
+                , {field: 'phone', title: '手机号', width: 120, align: 'center'}
+                , {
+                    field: 'email', title: '邮箱', align: 'center', templet: function (res) {
+                        return '<em>' + res.email + '</em>'
+                    }
+                }
+                , {field: 'sex', title: '性别', width: 80, align: 'center'}
+                , {field: 'home', title: '户籍', align: 'center'}
+                , {field: 'jointime', title: '入职时间', align: 'center'}
+                , {title: '操作', toolbar: '#test-table-toolbar-barDemo', align: 'center'}
+            ]]
+            , page: {
+                //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                //,curr: 5 //设定初始在第 5 页
+                , groups: 1 //只显示 1 个连续页码
+                , first: false //不显示首页
+                , last: false //不显示尾页
+            },
+            done: function (res, curr, count) {
+                $('tr').css({'background-color': '#ffffff', 'color': '#000'});
+            }
+
+
+        });
+
+        //头工具栏事件
+        table.on('toolbar(test-table-toolbar)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'getCheckData':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'getCheckLength':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'isAll':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(test-table-toolbar)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                layer.prompt({
+                    formType: 2
+                    , value: data.email
+                }, function (value, index) {
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });
+            }
+        });
+
+        element.render('collapse');
+
+
+        //监听行工具事件
+        table.on('tool(test-table-toolbar)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+                    obj.del();
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                layer.prompt({
+                    formType: 2
+                    , value: data.email
+                }, function (value, index) {
+                    obj.update({
+                        email: value
+                    });
+                    layer.close(index);
+                });
+            }
+        });
+    });
+</script>

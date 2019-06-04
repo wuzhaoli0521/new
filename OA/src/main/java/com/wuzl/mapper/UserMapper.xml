@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wuzl.mapper.UserMapper">
+    <insert id="creatsUser" >
+     insert into user (workid,name,age,sex,birthdays,phone,email,home,jointime) values (#{u.workid},#{u.name},#{u.age},#{u.sex},#{u.birthdays},#{u.phone},#{u.email},#{u.home},#{u.jointime});
+ </insert>
+    <select id="findbyid" resultType="com.wuzl.bean.User">
+        select * from user where id=#{id}
+    </select>
+    <select id="findall" resultType="com.wuzl.bean.User">
+        select * from user limit #{n},#{m}
+
+    </select>
+    <update id="updateUser">
+        update  user set workid=#{u.workid},name=#{u.name},age=#{u.age},sex=#{u.sex},birthdays=#{u.birthdays},phone=#{u.phone},email=#{u.email},phone=#{u.home} where id=#{id}
+    </update>
+    <delete id="deleteUser">
+        delete from user where id=#{id}
+    </delete>
+    <select id="findnum" resultType="Int">
+          select count(*)  from user
+    </select>
+</mapper>
